@@ -1,0 +1,37 @@
+type GenericResponse {
+  success: Boolean
+}
+
+type Mutation {
+  createWeather(rainMm: Float, windMaxMS: Float, windAvgMS: Float, humidity: Float, tempOutdoor: Float, windDirDeg: Float, luxIndoor: Float, rgbIndoor: String, tempIndoor: Float, pressure: Float): Weather
+  updateWeather(time: String, rainMm: Float, windMaxMS: Float, windAvgMS: Float, humidity: Float, tempOutdoor: Float, windDirDeg: Float, luxIndoor: Float, rgbIndoor: String, tempIndoor: Float, pressure: Float): Weather
+  deleteWeather(time: String!): GenericResponse
+}
+
+type Query {
+  weather(
+    time: String
+
+    """
+    A JSON object conforming the the shape specified in http://docs.sequelizejs.com/en/latest/docs/querying/
+    """
+    where: SequelizeJSON
+  ): Weather
+}
+
+"""The `JSON` scalar type represents raw JSON as values."""
+scalar SequelizeJSON
+
+type Weather {
+  time: String!
+  rainMm: Float
+  windMaxMS: Float
+  windAvgMS: Float
+  humidity: Float
+  tempOutdoor: Float
+  windDirDeg: Float
+  luxIndoor: Float
+  rgbIndoor: String
+  tempIndoor: Float
+  pressure: Float
+}

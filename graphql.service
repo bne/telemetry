@@ -1,0 +1,13 @@
+[Unit]
+Description=GraphQL server
+After=network.target
+
+[Service]
+WorkingDirectory=/home/ben/projects/api
+ExecStart=npm run start
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
